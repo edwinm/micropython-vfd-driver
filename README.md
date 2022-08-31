@@ -4,7 +4,7 @@
 
 ## Vacuum fluorescent display (VFD)
 
-Futaba Vacuum fluorescent display are very bright displays and together with
+Futaba Vacuum fluorescent displays are very bright displays and together with
 a LGL VFD Studio backplate, very easy to control using SPI.
 Including power, only five connections are needed (GND, VSS, CS, CLK and SDI/MOSI).
 
