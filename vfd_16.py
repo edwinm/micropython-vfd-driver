@@ -1,4 +1,5 @@
-# MicroPython VFD driver for 16 segments only
+# MicroPython VFD driver for 16 segments
+# Version 1.0.0
 # 2022, Edwin Martin
 # License: MIT
 
