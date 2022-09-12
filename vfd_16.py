@@ -1,5 +1,5 @@
 # MicroPython VFD driver for 16 segments
-# Version 1.0.0
+# Version 1.1.0
 # 2022, Edwin Martin
 # License: MIT
 
@@ -12,6 +12,7 @@ SPACE = const(0x20)
 NOT_RELEVANT = const(0x00)
 
 DCRAM_DATA_WRITE = const(0x20)
+CGRAM_DATA_WRITE = const(0x40)
 DIGIT_SET_OF_DISPLAY_TIMING = const(0xE0)
 DIMMING_SET = const(0xE4)
 DISPLAY_LIGHT_ON = const(0xE8)
@@ -55,6 +56,26 @@ class Display():
 
     def light_off(self):
         self.__command((DISPLAY_LIGHT_OFF, NOT_RELEVANT))
+        
+    def light_off(self):
+        self.__command((DISPLAY_LIGHT_OFF, NOT_RELEVANT))
+        
+    def define_character(self, num, data):
+        char = [CGRAM_DATA_WRITE | num]
+        lines = data.split('\n')
+        if len(lines) > 7:
+            lines.remove('')
+        
+        for col in range(0, 5):
+            byte = 0
+            bit = 1
+            for row in range(0, 7):
+                if len(lines) > row and len(lines[row]) > col and lines[row][col] != ' ':
+                    byte |= bit
+                bit *= 2
+            char.append(byte)
+        
+        self.__command(char)
 
     def __command(self, commands):
         self.spi.init(baudrate=self.baudrate, polarity=0, phase=0, firstbit=self.spi.LSB)

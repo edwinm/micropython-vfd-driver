@@ -90,6 +90,35 @@ Dim the display. Values go from 0 (dark) until 240 (full brightness).
 
 Clears the display from any text.
 
+### `display.define_character(num, data)`
+
+Define your own character. `num` is a number 0-7 and `data` is a multiline string, see below.
+On the VFD display, you can define eight custom characters.
+
+You can provide the character with a multiline string of
+7 lines of 5 characters wide. Every nonspace character will be
+a bit that will light up.
+
+```python
+    display.define_character(0,
+"""
+ * *
+*****
+*****
+*****
+ ***
+ ***
+  *
+""")
+```
+
+You can include the custom characters in your text with hex codes:
+`"\x00"` for the custom character 0, `"\x01"` for the custom character 1,
+up till `"\x07"` for the custom character 7.
+See [demo.py](demo.py) for more examples.
+
+<img src="img/vfd-custom-characters.jpg" alt="Photo of VFD with custom characters" width="800" height="600">
+
 ## Hardware
 
 This code is tested with an ESP32 microcontroller, but should work with other microcontrollers that can run Micropython as well.

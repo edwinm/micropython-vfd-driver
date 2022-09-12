@@ -4,11 +4,56 @@ import vfd_16
 def main():
     display = vfd_16.Display(cs=18, clk=19, sdi=21, dimming=100)
 
-    display.write('12345678abcdEFGH')
+    display.define_character(0,
+"""
+ * *
+*****
+*****
+*****
+ ***
+ ***
+  *
+""")
+
+    display.define_character(1,
+"""
+
+  *
+   *
+*****
+   *
+  *
+""")
+
+    display.define_character(2,
+"""
+ ***
+ ***
+  *
+*****
+  *
+ * *
+*   *
+""")
+
+    display.define_character(3,
+"""
+ ***
+* * *
+* * *
+*****
+*   *
+*   *
+ ***
+""")
+
+
+
+    display.write('\x00\x01\x02\x03 VFD Display')
 
     time.sleep(1)
-    
-    display.write('ABCD', position=8)
+
+    display.write('0123456', position=9)
 
     time.sleep(1)
 
@@ -38,7 +83,7 @@ def main():
 
     display.clear()
 
-    display.write('MicroPython VFD')
+    display.write('\x01MicroPython VFD')
     
     time.sleep(1)
 
