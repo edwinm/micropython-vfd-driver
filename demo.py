@@ -87,5 +87,7 @@ def main():
     
     time.sleep(1)
 
+    display.dim(255)
+
 if __name__ == '__main__':
     main()
