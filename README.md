@@ -90,6 +90,15 @@ Dim the display. Values go from 0 (dark) until 240 (full brightness).
 
 Clears the display from any text.
 
+### `display.ticker(text, fps, callback)`
+
+Show the text scrolling on the display.
+The `text` parameter is the text, which can be larger than 16 characters.
+Set the speed with the `fps` parameter. 5 is the default value.
+A higher value results in faster scrolling.
+The last optional parameter is a callback function.
+When this callback function returns `True`, the `ticker` function stops and returns.
+
 ### `display.define_character(num, data)`
 
 Define your own character. `num` is a number 0-7 and `data` is a multiline string, see below.
