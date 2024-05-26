@@ -26,7 +26,7 @@ STAND_BY_MODE = const(0x01)
 
 class Display():
 
-    def __init__(self, cs, clk, sdi, spi_id=2, dimming=255, baudrate=20000000):
+    def __init__(self, cs, clk, sdi, spi_id=1, dimming=255, baudrate=20000000):
         self.baudrate = baudrate
         self.spi = SPI(spi_id, sck=Pin(clk), mosi=Pin(sdi))
         self.cs = Pin(cs, Pin.OUT, value=1)
